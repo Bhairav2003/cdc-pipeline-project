@@ -1,11 +1,11 @@
 # cdc-pipeline-project
-# 🚀 Change Data Capture (CDC) Pipeline with Azure Data Factory and Databricks
+#  Change Data Capture (CDC) Pipeline with Azure Data Factory and Databricks
 
 This project implements a real-time, scalable **Change Data Capture (CDC)** pipeline using **Azure Data Factory**, **Azure Databricks**, and **SQL Server**. It captures data changes (inserts, updates, deletes) from source tables and reflects them efficiently into the **Azure Data Lake Storage (ADLS)** using **Delta Lake** and Apache Spark.
 
 ---
 
-## 🧩 Tech Stack
+##  Tech Stack
 
 - Microsoft SQL Server (on-prem/local)
 - Azure Data Factory (ADF)
@@ -44,30 +44,30 @@ Each table has **20 sample records** inserted for testing the pipeline.
 
 ## 🛠️ Implementation Steps
 
-### ✅ Step 1: Create Source Tables in SQL Server
+###  Step 1: Create Source Tables in SQL Server
 
 - Tables: `Customer`, `Product`, `Order`, `Inventory`
 - Insert sample data (20 rows each)
 - Enable remote connection + TCP/IP for JDBC access
 
-### ✅ Step 2: Connect SQL Server to Azure Data Factory (ADF)
+###  Step 2: Connect SQL Server to Azure Data Factory (ADF)
 
 - Create a **Linked Service** in ADF to connect to on-prem SQL Server
 - Use **Self-hosted Integration Runtime (SHIR)** for secure local connectivity
 
-### ✅ Step 3: Build ADF Pipeline
+###  Step 3: Build ADF Pipeline
 
 - **Copy Activity**: Load data from SQL Server to ADLS (raw zone)
 - **Databricks Notebook Activity**: Execute CDC logic using Delta Lake
 - Add **dynamic parameters** for table names and filenames
 
-### ✅ Step 4: Implement CDC Logic in Databricks
+###  Step 4: Implement CDC Logic in Databricks
 
 - CDC implemented via **Delta Lake `MERGE` statements**
 - Compare raw data vs. processed Delta tables
 - Handle inserts, updates, deletes
 
-### ✅ Step 5: Schedule Execution + Notification
+###  Step 5: Schedule Execution + Notification
 
 - Trigger the ADF pipeline to run **every 1 hour**
 - On success, **send email notification** with updated table status (via Logic App or Databricks)
